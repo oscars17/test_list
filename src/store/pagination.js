@@ -35,5 +35,5 @@ export default {
             commit('SET_NUM_PAGES', list_length)
             dispatch('setPageChunks')
         }
-    }
+    },
 }

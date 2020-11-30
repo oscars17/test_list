@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import { mapState, mapGetters } from 'vuex'
+  import { mapState } from 'vuex'
   import DataElement from "@/components/DataRows/DataElement/DataElement"
 
   export default {
@@ -18,11 +18,14 @@
       DataElement
     },
     computed: {
-      ...mapGetters(['list_page']),
       ...mapState({
         rows: state => state.rows,
-        page: state => state.pagination.page
-      })
+        page: state => state.pagination.page,
+        el_per_page: state => state.pagination.el_per_page
+      }),
+      list_page() {
+        return this.rows.slice(this.el_per_page * (this.page - 1), this.el_per_page * this.page)
+      }
     },
     watch: {
       page(data) {
