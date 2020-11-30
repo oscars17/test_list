@@ -5,12 +5,6 @@
 
 <script>
   export default {
-    props: {
-      text: {
-        type: String,
-        required: true
-      }
-    },
     methods: {
       triggerEvent() {
         return this.$emit('click-event')

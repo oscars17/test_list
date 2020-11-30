@@ -1,9 +1,13 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
+import pagination from "./pagination"
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+    modules: {
+      pagination: pagination
+    },
     state: {
         scroll_position: 0,
         column_names: [],
@@ -28,7 +32,12 @@ const store = new Vuex.Store({
         }
     },
     getters: {
-
+        list_length: (state) => state.rows.length,
+        list_page: (state) => {
+            const el_per_page = state.pagination.el_per_page
+            const page = state.pagination.page
+            return state.rows.splice(el_per_page * page - el_per_page, el_per_page * page)
+        }
     }
 })
 

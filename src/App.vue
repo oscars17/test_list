@@ -7,13 +7,12 @@
     nav
       navigation
     main
-      data-rows
+      router-view
     footer
 </template>
 
 <script>
   import Navigation from "@/components/Navigation/Navigation"
-  import DataRows from "@/components/DataRows/DataRows"
   import ApplicationBar from "@/components/ApplicationBar/ApplicationBar"
   import ApplicationHeader from "@/components/ApplicationHeader/ApplicationHeader"
   import { mapMutations } from 'vuex'
@@ -23,7 +22,6 @@
       ApplicationHeader,
       ApplicationBar,
       Navigation,
-      DataRows
     },
     mounted() {
       document.addEventListener('scroll', this.setStoreScrollPosition)
