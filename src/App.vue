@@ -1,28 +1,47 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="pug">
+  div#app_wrapper
+    header
+      application-header
+    nav
+      application-bar
+    nav
+      navigation
+    main
+      data-rows
+    footer
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Navigation from "@/components/Navigation/Navigation"
+  import DataRows from "@/components/DataRows/DataRows"
+  import ApplicationBar from "@/components/ApplicationBar/ApplicationBar"
+  import ApplicationHeader from "@/components/ApplicationHeader/ApplicationHeader"
+  import { mapMutations } from 'vuex'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    components: {
+      ApplicationHeader,
+      ApplicationBar,
+      Navigation,
+      DataRows
+    },
+    mounted() {
+      document.addEventListener('scroll', this.setStoreScrollPosition)
+    },
+    beforeDestroy() {
+      document.removeEventListener('scroll', this.setStoreScrollPosition)
+    },
+    methods: {
+      ...mapMutations({
+        setScroll: 'SET_SCROLL_POSITION'
+      }),
+      setStoreScrollPosition() {
+        this.setScroll(window.scrollY)
+      }
+    },
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  @import "assets/css/main"
 </style>
