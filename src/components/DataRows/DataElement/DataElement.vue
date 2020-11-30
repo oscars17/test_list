@@ -5,18 +5,18 @@
 </template>
 
 <script>
-export default {
-  name: "data-element",
-  props: {
-    data: {
-      type: Object,
-      required: true
+  export default {
+    name: "data-element",
+    props: {
+      data: {
+        type: Object,
+        required: true
+      },
+      index: {
+        type: Number,
+        required: true
+      }
     },
-    index: {
-      type: Number,
-      required: true
-    }
-  }
   }
 </script>
 
