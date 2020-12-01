@@ -7,7 +7,7 @@
   export default {
     methods: {
       triggerEvent() {
-        return this.$emit('click-event')
+        return this.$emit('on-click')
       }
     }
   }

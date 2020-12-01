@@ -1,5 +1,10 @@
 body
+  margin: 0
   background: #e7e6e5
+
+html
+  min-height: 100%
+  overflow-y: scroll
 
 ul
   list-style: none
@@ -16,3 +21,17 @@ li
 .grid-row
   display: grid
   grid-template-columns: repeat(4, 1fr)
+
+*
+  scrollbar-width: thin
+  scrollbar-color: #7e6e5e #e7e6e5
+
+*::-webkit-scrollbar
+  width: 12px
+
+*::-webkit-scrollbar-track
+  background: #e7e6e5
+
+*::-webkit-scrollbar-thumb
+  background-color: #7e6e5e
+  border: 2px solid #e7e6e5

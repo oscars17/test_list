@@ -40,7 +40,19 @@
       ...mapGetters(['list_length']),
     },
     watch: {
-      page() {
+      '$route.query'() {
+        this.setPaginationStructure(this.list_length)
+      },
+      '$route.query.search_text'(){
+        this.setPage(1)
+      },
+      page(data) {
+        if (data == this.$route.query.page) return
+        this.$router.push({name: 'main', query: Object.assign({}, this.$route.query, {page: data})})
+        this.setPageChunks()
+      },
+      list_length(data) {
+        this.setPaginationStructure(data)
         this.setPageChunks()
       }
     },
