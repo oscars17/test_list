@@ -21,7 +21,7 @@
             v-show="show_search"
             @on-click="$emit('toggle-search')"
             )
-            div.button-text Поиск
+            div.button-text поиск
     slot
 </template>
 

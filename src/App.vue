@@ -1,7 +1,10 @@
 <template lang="pug">
   div#app_wrapper(ref="app")
     header
-        application-header(@show-app-bar="showAppBar")
+        application-header(
+          :class="scroll_position > 100 ? 'additional-padding' : ''"
+          @show-app-bar="showAppBar"
+          )
     nav
       transition(
         enter-active-class="fadeIn"
@@ -29,7 +32,9 @@
         appear
         v-on:after-enter="showRouterBar"
       )
-        navigation(v-show="show_navigation_bar")
+        navigation(
+          v-show="show_navigation_bar"
+          )
     main
       transition(
         enter-active-class="fadeLeft"
@@ -74,7 +79,7 @@
       screen_width() {
         const app = this.$refs['app']
         this.app_width = app.offsetWidth
-      }
+      },
     },
     mounted() {
       this.setWindowSize()
